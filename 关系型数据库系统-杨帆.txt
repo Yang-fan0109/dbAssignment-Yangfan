@@ -1,0 +1,31 @@
+当前主流的关系型数据库有Oracle、DB2、Microsoft SQL Server、Microsoft Access、MySQL等。下面我讲逐一介绍这几个关系型数据库的优缺点及应用场景。
+首先是Oracle，Oracle是1983年推出的世界上第一个开放式商品化关系型数据库管理系统。它采用标准的SQL结构化查询语言，支持多种数据类型，提供面向对象存储的数据支持，具有第四代语言开发工具，支持Unix、Windows NT、OS/2、Novell等多种平台。
+它完全开放，性能很高，因此安全性高，采用标准的SQL结构化查询语言，支持字符和图形界面，非常易于开发。
+但Oracle价格昂贵，对硬件要求很高，对管理员经验要求也比较高，因此管理维护起来相对麻烦。
+现在大部分企事业单位都选用Oracle.
+
+其次是Microsoft SQL Server。SQL Server 是Microsoft 公司推出的关系型数据库管理系统。具有使用方便可伸缩性好与相关软件集成程度高等优点，可跨越从运行Microsoft Windows 98 的膝上型电脑到运行Microsoft Windows 2012 的大型多处理器的服务器等多种平台使用
+缺点是只能在windows系统应用。链接多用户时，性能较差，不够稳定。
+其使用场景：主要用于Web网站的建设，在租赁的虚拟主机中一般会预安装SQL Server作为数据库软件。
+
+Microsoft Access是由微软发布的关系数据库管理系统。它结合了 MicrosoftJet Database Engine 和 图形用户界面两项特点，是 Microsoft Office 的系统程序之一。
+它是ACCESS是小型数据库、桌面数据库，容易操作，使用广，成本低。
+但它记录数过多，一般记录数达到10万条左右的时候性能就会急剧下降。
+比较适合数据量少的应用。
+
+MySQL由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一，在 WEB 应用方面，MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。
+MySQL是一种关系数据库管理系统，关系数据库将数据保存在不同的表中，而不是将所有数据放在一个大仓库内，这样就增加了速度并提高了灵活性。
+其优点是为多种编程语言提供了API。这些编程语言包括C、C++、Python、Java、Perl、PHP、Eiffel、Ruby和Tcl等；
+但其缺乏一些存储程序的功能且使用缺省的ip端口，但是有时候这些ip也会被一些黑客闯入。
+其使用场景大致有：
+广泛地应用在Internet上的中小型网站中
+LAMP（Linux+Apache+Mysql+Php）
+mysql的优势在于免费，如果业务系统数据库不是极其庞大，可用mysql
+
+最后提到DB2数据库
+它能在所有主流平台上运行（包括windows），最适于海量数据；具有很好的并行性。DB2把数据库管理扩充到了并行的、多节点的环境；获得最高认证级别的ISO标准认证；
+客户端支持及应用模式；操作简单，同时提供GUI和命令行，在windowsNT和unix下操作相同。
+性能较高，适用于数据仓库和在线事物处理。
+
+
+   
