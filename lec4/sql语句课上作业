@@ -1,0 +1,99 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
+-- -----------------------------------------------------
+-- Schema yf_demo_0316
+-- -----------------------------------------------------
+USE `mydb` ;
+
+-- -----------------------------------------------------
+-- Table `mydb`.`student`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`student` (
+  `stuid` INT NOT NULL,
+  `stuname` VARCHAR(45) NOT NULL,
+  `curid` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`stuid`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`curriculum`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`curriculum` (
+  `curid` INT NOT NULL,
+  `curname` VARCHAR(45) NOT NULL,
+  `time` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`curid`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`teacher`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`teacher` (
+  `teacherid` INT NOT NULL,
+  `teachername` VARCHAR(45) NOT NULL,
+  `curid` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`teacherid`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`teach`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`teach` (
+  `student_stuid` INT NOT NULL,
+  `teacher_teacherid` INT NOT NULL,
+  PRIMARY KEY (`student_stuid`, `teacher_teacherid`),
+  INDEX `fk_student_has_teacher_teacher1_idx` (`teacher_teacherid` ASC) VISIBLE,
+  INDEX `fk_student_has_teacher_student_idx` (`student_stuid` ASC) VISIBLE,
+  CONSTRAINT `fk_student_has_teacher_student`
+    FOREIGN KEY (`student_stuid`)
+    REFERENCES `mydb`.`student` (`stuid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_student_has_teacher_teacher1`
+    FOREIGN KEY (`teacher_teacherid`)
+    REFERENCES `mydb`.`teacher` (`teacherid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`choose`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`choose` (
+  `student_stuid` INT NOT NULL,
+  `curriculum_curid` INT NOT NULL,
+  PRIMARY KEY (`student_stuid`, `curriculum_curid`),
+  INDEX `fk_student_has_curriculum_curriculum1_idx` (`curriculum_curid` ASC) VISIBLE,
+  INDEX `fk_student_has_curriculum_student1_idx` (`student_stuid` ASC) VISIBLE,
+  CONSTRAINT `fk_student_has_curriculum_student1`
+    FOREIGN KEY (`student_stuid`)
+    REFERENCES `mydb`.`student` (`stuid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_student_has_curriculum_curriculum1`
+    FOREIGN KEY (`curriculum_curid`)
+    REFERENCES `mydb`.`curriculum` (`curid`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
